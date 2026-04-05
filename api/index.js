@@ -16,7 +16,7 @@ export default function handler(req, res) {
 print("ZeIoNhUb: โหลดสำเร็จ!")
 
 -- main script
-loadstring(game:HttpGet("https://pastebin.com/raw/vJpmsg0Y"))()
+loadstring(game:HttpGet("pastebin.com/raw/pd2Wjy1c"))()
       `);
 
     } else {
