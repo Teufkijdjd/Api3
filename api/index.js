@@ -1,26 +1,17 @@
 export default function handler(req, res) {
   try {
-    const uaRaw = req.headers['user-agent'] || "";
-    const ua = uaRaw.toLowerCase();
+    const ua = req.headers['user-agent'] || "";
 
-    // ✅ อนุญาตเฉพาะ Roblox / executor (ที่ไม่มี UA)
-    const allow =
-      ua.includes("roblox") || // Roblox จริง
-      ua === "" ||             // executor บางตัว
-      ua.includes("studio");   // Roblox Studio
-
-    if (allow) {
+    // ✅ อนุญาต Roblox / executor
+    if (ua === "" || ua.toLowerCase().includes("roblox")) {
       res.setHeader('Content-Type', 'text/plain');
-
       res.status(200).send(`
 print("ZeIoNhUb: โหลดสำเร็จ!")
 
--- main script
-loadstring(game:HttpGet("pastebin.com/raw/pd2Wjy1c"))()
+-- โหลดสคริปใหม่
+loadstring(game:HttpGet("https://pastebin.com/raw/uNyG7Yu5"))()
       `);
-
     } else {
-      // ❌ คนเปิดผ่าน browser
       res.status(404).send("404: NOT FOUND");
     }
 
